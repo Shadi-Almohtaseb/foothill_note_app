@@ -63,7 +63,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-router.get("/search", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const term = String(req.query.q)
     const notes = await searchNote(term)

@@ -8,7 +8,7 @@ export class Note extends BaseEntity {
     @Column({ length: 255, nullable: false })
     title: string;
 
-    @Column({ nullable: false })
+    @Column({ nullable: false, type: 'text' })
     content: string;
 
     @CreateDateColumn({

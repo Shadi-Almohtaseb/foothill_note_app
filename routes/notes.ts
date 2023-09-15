@@ -14,17 +14,19 @@ router.post('/create-note', async (req, res) => {
 });
 
 
-/* POST new note. */
-router.get('/get-all-notes', async (req, res) => {
+/* GET notes. */
+router.get('/get-notes', async (req, res) => {
   const payload = {
     page: req.query.page?.toString() || '1',
-    pageSize: req.query.pageSize?.toString() || '10'
+    pageSize: req.query.pageSize?.toString() || '10',
+    q: req.query.q?.toString() || ''
   };
   try {
     const notes = await getAllNotes(payload);
     res.status(200).send({
       page: payload.page,
       pageSize: payload.pageSize,
+      q: payload.q,
       total: notes.length,
       notes: notes,
     });

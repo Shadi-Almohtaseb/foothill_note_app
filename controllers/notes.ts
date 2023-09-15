@@ -13,6 +13,7 @@ const createNote = (payload: NS_Note.Item) => {
 const getAllNotes = async (payload: GetAll) => {
     const page = parseInt(payload.page);
     const pageSize = parseInt(payload.pageSize);
+    const q = payload.q
 
     const notes = await Note.find({
         skip: pageSize * (page - 1),
@@ -20,6 +21,10 @@ const getAllNotes = async (payload: GetAll) => {
         order: {
             createdAt: 'DESC'
         },
+        where: [
+            { title: Like(`%${q}%`) },
+            { content: Like(`%${q}%`) }
+        ]
     })
     return notes;
 }

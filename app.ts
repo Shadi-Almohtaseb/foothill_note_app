@@ -1,3 +1,4 @@
+import './config.js';
 import createError from "http-errors";
 import express from "express";
 import cookieParser from "cookie-parser";
@@ -8,7 +9,8 @@ import notesRouter from "./routes/notes.js";
 import dataSource from "./db/dataSource.js";
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
+
 
 app.use(cors({
   origin: ['http://localhost:5000', 'http://localhost:3000']

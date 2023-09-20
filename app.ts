@@ -6,10 +6,8 @@ import logger from "morgan";
 import cors from 'cors';
 import indexRouter from "./routes/index.js";
 import notesRouter from "./routes/notes.js";
-import dataSource, { initDB } from "./db/dataSource.js";
 
 const app = express();
-const PORT = process.env.PORT || 5000;
 
 app.use(cors({
   origin: ['http://localhost:5000', 'http://localhost:3000']
@@ -40,10 +38,6 @@ app.get('*', function (req, res) {
   res.status(404).send('404, Resource Not Found');
 });
 
-app.listen(PORT, () => {
-  logger(`App is listening on port ${PORT}`);
-  console.log(`App is listening on port ${PORT} and host http://localhost:${PORT}`);
-  initDB()
-});
+
 
 export default app;

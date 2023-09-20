@@ -10,7 +10,7 @@
     "test": "jest",
     "build": "rimraf dist && tsc",
     "ts.check": "tsc --project tsconfig.json",
-    "add-build": "git add dist",
+    "add-build": "git add dist -f",
     "dev": "concurrently \"npm:build-tsc\"  \"npm:run-watch\""
   },
   "pre-commit": [
